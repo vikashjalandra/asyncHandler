@@ -1,0 +1,112 @@
+{
+  "name": "async-handler-universal",
+  "version": "1.0.0",
+  "description": "Universal async/await error handler for all Node.js frameworks — Express, Koa, Fastify, Hapi, Next.js, NestJS, and more.",
+  "main": "./dist/cjs/index.js",
+  "module": "./dist/esm/index.js",
+  "types": "./dist/types/index.d.ts",
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/esm/index.js",
+      "require": "./dist/cjs/index.js"
+    },
+    "./express": {
+      "types": "./dist/types/adapters/express.d.ts",
+      "import": "./dist/esm/adapters/express.js",
+      "require": "./dist/cjs/adapters/express.js"
+    },
+    "./koa": {
+      "types": "./dist/types/adapters/koa.d.ts",
+      "import": "./dist/esm/adapters/koa.js",
+      "require": "./dist/cjs/adapters/koa.js"
+    },
+    "./fastify": {
+      "types": "./dist/types/adapters/fastify.d.ts",
+      "import": "./dist/esm/adapters/fastify.js",
+      "require": "./dist/cjs/adapters/fastify.js"
+    },
+    "./hapi": {
+      "types": "./dist/types/adapters/hapi.d.ts",
+      "import": "./dist/esm/adapters/hapi.js",
+      "require": "./dist/cjs/adapters/hapi.js"
+    },
+    "./nextjs": {
+      "types": "./dist/types/adapters/nextjs.d.ts",
+      "import": "./dist/esm/adapters/nextjs.js",
+      "require": "./dist/cjs/adapters/nextjs.js"
+    },
+    "./core": {
+      "types": "./dist/types/core.d.ts",
+      "import": "./dist/esm/core.js",
+      "require": "./dist/cjs/core.js"
+    }
+  },
+  "files": [
+    "dist",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "build": "npm run build:cjs && npm run build:esm && npm run build:types && npm run build:fixmodules",
+    "build:cjs": "tsc -p tsconfig.cjs.json",
+    "build:esm": "tsc -p tsconfig.esm.json",
+    "build:types": "tsc -p tsconfig.types.json",
+    "build:fixmodules": "node -e \"require('fs').writeFileSync('dist/esm/package.json','{\\\"type\\\":\\\"module\\\"}');require('fs').writeFileSync('dist/cjs/package.json','{\\\"type\\\":\\\"commonjs\\\"}');\"",
+    "test": "jest --coverage",
+    "test:watch": "jest --watch",
+    "lint": "eslint src/",
+    "prepublishOnly": "npm run build && npm test",
+    "clean": "rimraf dist"
+  },
+  "keywords": [
+    "async",
+    "await",
+    "handler",
+    "error-handling",
+    "middleware",
+    "express",
+    "koa",
+    "fastify",
+    "hapi",
+    "nextjs",
+    "nestjs",
+    "nodejs",
+    "universal",
+    "wrapper",
+    "try-catch",
+    "promise"
+  ],
+  "author": "Vikash Kumawat",
+  "license": "MIT",
+  "devDependencies": {
+    "@types/express": "^4.17.21",
+    "@types/jest": "^29.5.12",
+    "@types/node": "^20.11.0",
+    "jest": "^29.7.0",
+    "ts-jest": "^29.1.2",
+    "typescript": "^5.3.3",
+    "rimraf": "^5.0.5"
+  },
+  "peerDependencies": {
+    "express": ">=4.0.0",
+    "koa": ">=2.0.0",
+    "fastify": ">=3.0.0",
+    "@hapi/hapi": ">=20.0.0",
+    "next": ">=12.0.0"
+  },
+  "peerDependenciesMeta": {
+    "express": { "optional": true },
+    "koa": { "optional": true },
+    "fastify": { "optional": true },
+    "@hapi/hapi": { "optional": true },
+    "next": { "optional": true }
+  },
+  "engines": {
+    "node": ">=14.0.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": ""
+  }
+}
