@@ -1,6 +1,6 @@
 {
     "name": "async-handler-universal",
-    "version": "1.0.0",
+    "version": "1.0.1",
     "description": "Universal async/await error handler for all Node.js frameworks — Express, Koa, Fastify, Hapi, Next.js, NestJS, and more.",
     "main": "./dist/cjs/index.js",
     "module": "./dist/esm/index.js",
