@@ -60,6 +60,8 @@
         "clean": "rimraf dist"
     },
     "keywords": [
+        "async-handler",
+        "async-handler-universal",
         "async",
         "await",
         "handler",
